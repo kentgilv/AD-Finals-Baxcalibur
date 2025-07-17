@@ -167,10 +167,12 @@ $payments = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </section>
     </div>
 </main>
-    <?php include_once BASE_PATH . '/layouts/footer.php'; ?>
+
   </div>
     <!-- ✅ Alert for Login Success -->
   <?php
+    require_once COMPONENTS_PATH . '/templates/footer.component.php';
+    require_once COMPONENTS_PATH . '/templates/foot.component.php';
     $successMessage = trim((string) ($_GET['message'] ?? ''));
     $successMessage = str_replace("%", " ", $successMessage);
     if (!empty($successMessage)):
@@ -181,5 +183,3 @@ $payments = $stmt->fetchAll(PDO::FETCH_ASSOC);
       });
     </script>
   <?php endif; ?>
-</body>
-</html>
