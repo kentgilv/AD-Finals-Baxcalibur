@@ -49,7 +49,7 @@ if ($action === 'signup' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         Auth::login($pdo, $formData['username'], $formData['password']);
         $user = Auth::user();
         // Updated redirect with urlencode:
-        header('Location: /pages/userDashboardPage/index.php?message=' . urlencode('Account created successfully'));
+        header('Location: /pages/userDashboard/index.php?message=' . urlencode('Account created successfully'));
         exit;
     } catch (PDOException $e) {
         // Handle duplicate username or DB errors
