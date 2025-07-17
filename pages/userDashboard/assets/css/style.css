@@ -1,0 +1,154 @@
+/* Inherit global font */
+* {
+  font-family: "Orbitron", sans-serif;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+/* ===== USER DASHBOARD BACKGROUND ===== */
+.user-dashboard-wrapper {
+  background-image: url('../img/userDashboard-background-image.png'); /* relative to this CSS file */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 6rem 2rem 2rem;
+  color: white;
+}
+
+/* Section Wrapper */
+.dashboard-section {
+  padding: 2rem;
+  color: white;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #d63cff;
+  margin-bottom: 2rem;
+}
+
+/* Dashboard Flex Container */
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  background-color: rgba(0, 0, 0, 0.6); /* darker */
+  border: 1px solid #d63cff;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 0 20px #d63cff;
+  backdrop-filter: blur(6px); /* optional for glassy effect */
+}
+
+/* User Info Section */
+.user-info,
+.bookings-info {
+  flex: 1;
+  min-width: 300px;
+  background-color: rgba(0, 0, 0, 0.6); /* darker box background */
+  border: 1px solid #d63cff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #d63cff;
+  backdrop-filter: blur(4px); /* optional */
+}
+
+/* User Profile Layout */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Avatar */
+.user-avatar {
+  flex-shrink: 0;
+  color: #d63cff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-greeting {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #d63cff;
+}
+
+.user-greeting span {
+  color: white;
+  text-shadow: 0 0 10px #d63cff;
+}
+
+.user-details p {
+  font-size: 1.1rem;
+  margin: 0.25rem 0;
+}
+
+.label {
+  color: #d63cff;
+  font-weight: bold;
+}
+
+/* Bookings */
+.booking-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border: 1px solid #d63cff;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  position: relative;
+  box-shadow: 0 0 5px #d63cff;
+}
+
+.remove-booking {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: #d63cff;
+  cursor: pointer;
+}
+
+.add-booking {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #d63cff;
+  text-decoration: none;
+}
+
+.highlight {
+  color: #d63cff;
+}
+.pay-now,
+.cancel-now {
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 5px 5px 0 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cancel-now {
+  background-color: #e53935;
+}
+
+.pay-now:hover,
+.cancel-now:hover {
+  opacity: 0.9;
+}
