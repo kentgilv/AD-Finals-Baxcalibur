@@ -1,10 +1,10 @@
 services:
-  web-app-php:
+  ad-finals-baxcalibur:
     build:
       context: .
-    container_name: web-app-php-service
+    container_name: ad-finals-baxcalibur-service
     ports:
-      - "8000:8000"
+      - "8002:8000"
     develop:
       watch:
         - path: .
@@ -19,31 +19,31 @@ services:
 
   mongodb:
     image: mongo:latest
-    container_name: web-app-php-mongodb
+    container_name: ad-finals-baxcalibur-mongodb
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootPassword
-      MONGO_INITDB_DATABASE: mydatabase
+      MONGO_INITDB_ROOT_USERNAME: adminBaxcalibur
+      MONGO_INITDB_ROOT_PASSWORD: passwordBaxcalibur
+      MONGO_INITDB_DATABASE: baxcaliburDb
     ports:
       - "27111:27017"
     volumes:
-      - web-app-php-mongodb:/data/db/mongodb
+      - ad-finals-baxcalibur-mongodb:/data/db/mongodb
 
   postgresql:
     image: postgres:15
-    container_name: web-app-php-postgresql
+    container_name: ad-finals-baxcalibur-postgresql
     restart: always
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: adminBaxcalibur
+      POSTGRES_PASSWORD: passwordBaxcalibur
+      POSTGRES_DB: baxcaliburDb
     ports:
-      - "5112:5432"
+      - "5114:5432"
     volumes:
-      - web-app-php-postgresql:/data/db/postgresql
+      - ad-finals-baxcalibur-postgresql:/data/db/postgresql
 
 volumes:
-  web-app-php-mongodb:
+  ad-finals-baxcalibur-mongodb:
     driver: local
-  web-app-php-postgresql:
+  ad-finals-baxcalibur-postgresql:
     driver: local
