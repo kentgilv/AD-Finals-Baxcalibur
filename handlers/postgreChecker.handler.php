@@ -1,19 +1,22 @@
 <?php
 
-$host = "host.docker.internal"; 
-$port = "5112";
-$username = "user";
-$password = "password";
-$dbname = "mydatabase";
+require_once UTILS_PATH . '/envSetter.util.php';
+
+$host = "host.docker.internal";
+$port = $databases['pgPort'];
+$username = $databases['pgUser'];
+$password = $databases['pgPassword'];
+$dbname = $databases['pgDB'];
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$username password=$password";
 
 $dbconn = pg_connect($conn_string);
 
 if (!$dbconn) {
-    echo "❌ Connection Failed: ", pg_last_error() . "  <br>";
+    error_log("❌ PostgreSQL connection failed: " . pg_last_error());
     exit();
 } else {
-    echo "✔️ PostgreSQL Connection  <br>";
+    error_log("✔️ PostgreSQL connection succeeded.");
     pg_close($dbconn);
 }
+//PINALITAN MUNA
