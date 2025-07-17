@@ -25,7 +25,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: passwordBaxcalibur
       MONGO_INITDB_DATABASE: baxcaliburDb
     ports:
-      - "27111:27017"
+      - "27112:27017"
     volumes:
       - ad-finals-baxcalibur-mongodb:/data/db/mongodb
 
