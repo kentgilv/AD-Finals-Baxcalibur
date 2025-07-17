@@ -1,44 +1,88 @@
 <?php
 declare(strict_types=1);
 
-// 1) Composer autoload
 require_once 'vendor/autoload.php';
-
-// 2) Composer bootstrap
 require_once 'bootstrap.php';
-
-// 3) envSetter
 require_once UTILS_PATH . '/envSetter.util.php';
 
-$host = $databases['pgHost'];
-$port = $databases['pgPort'];
-$username = $databases['pgUser'];
-$password = $databases['pgPassword'];
-$dbname = $databases['pgDB'];
+// Connects to database
+function connectToDatabase(array $config): PDO {
+    $dsn = sprintf("pgsql:host=%s;port=%s;dbname=%s", $config['pgHost'], $config['pgPort'], $config['pgDB']);
 
-// ——— Connect to PostgreSQL ———
-$dsn = "pgsql:host={$databases['pgHost']};port={$port};dbname={$dbname}";
-$pdo = new PDO($dsn, $username, $password, [
-  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-]);
-
-echo "Dropping old tables…\n";
-foreach ([
-  'projects',
-  'users',
-] as $table) {
-  // Use IF EXISTS so it won’t error if the table is already gone
-  $pdo->exec("DROP TABLE IF EXISTS {$table} CASCADE;");
+    try {
+        $pdo = new PDO($dsn, $config['pgUser'], $config['pgPassword'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ]);
+        echo "✅ Connected to database.\n\n";
+        return $pdo;
+    } catch (PDOException $e) {
+        die("❌ Connection failed: " . $e->getMessage() . "\n\n");
+    }
 }
 
-echo "Applying schema from database/users.model.sql…\n";
-
-$sql = file_get_contents('database/users.model.sql');
-
-if ($sql === false) {
-  throw new RuntimeException("Could not read database/users.model.sql");
-} else {
-  echo "Creation Success from the database/users.model.sql";
+// Check if a table exists
+function tableExists(PDO $pdo, string $table): bool {
+    $stmt = $pdo->prepare("
+        SELECT EXISTS (
+            SELECT 1
+            FROM information_schema.tables
+            WHERE table_schema = 'public'
+              AND table_name = :table
+        )
+    ");
+    $stmt->execute(['table' => $table]);
+    return (bool) $stmt->fetchColumn();
 }
 
-$pdo->exec($sql);
+// Load and apply SQL schema files
+function applyModels(PDO $pdo, array $modelFiles): void {
+    foreach ($modelFiles as $table => $filePath) {
+        echo "📄 Applying model for '$table' from '$filePath'…\n";
+
+        $sql = @file_get_contents($filePath);
+        if ($sql === false) {
+            echo "❌ Failed to read file: $filePath\n";
+            continue;
+        }
+
+        try {
+            $pdo->exec($sql);
+            echo "✅ Model applied: $table\n";
+        } catch (PDOException $e) {
+            echo "❌ Failed to apply model for $table: " . $e->getMessage() . "\n";
+        }
+    }
+}
+
+// Truncate tables
+function truncateTables(PDO $pdo, array $tables): void {
+    echo "\n🧹 Truncating tables…\n";
+
+    foreach ($tables as $table) {
+        if (tableExists($pdo, $table)) {
+            try {
+                $pdo->exec("TRUNCATE TABLE \"$table\" RESTART IDENTITY CASCADE;");
+                echo "✅ Truncated table: $table\n";
+            } catch (PDOException $e) {
+                echo "❌ Failed to truncate table $table: " . $e->getMessage() . "\n";
+            }
+        } else {
+            echo "⚠️ Skipped: Table '$table' does not exist.\n";
+        }
+    }
+}
+
+// Main execution
+$pdo = connectToDatabase($databases);
+
+$modelFiles = [
+    'users'    => 'database/users.model.sql',
+    'trips'    => 'database/trips.model.sql',
+    'bookings' => 'database/bookings.model.sql',
+    'payments' => 'database/payments.model.sql',
+];
+
+applyModels($pdo, $modelFiles);
+truncateTables($pdo, array_keys($modelFiles));
+
+echo "\n🏁 Database Resetting Complete.\n";
