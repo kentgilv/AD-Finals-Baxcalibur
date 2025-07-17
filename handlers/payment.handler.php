@@ -24,7 +24,7 @@ function connectToDatabase(array $config): PDO
         $pdo = new PDO($dsn, $config['pgUser'], $config['pgPassword'], [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ]);
-        echo "✅ Connected to database.\n\n";
+        // echo "✅ Connected to database.\n\n";
         return $pdo;
     } catch (PDOException $e) {
         die("❌ Connection failed: " . $e->getMessage() . "\n\n");
@@ -48,7 +48,8 @@ function payBooking(PDO $pdo, string $user_id): void
         if ($booking['id'] === $user_booking_id) {
             Payment::createPayment($pdo, $user_booking_id, $booking_amount);
             Payment::updateBooking($pdo, $user_booking_id);
-            echo "✅ Payment created for booking: $user_booking_id\n\n";
+            // echo "✅ Payment created for booking: $user_booking_id\n\n";
+            header('Location: /pages/userDashboard/index.php');
             return;
         }
     }
