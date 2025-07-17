@@ -55,8 +55,8 @@ function applyModels(PDO $pdo, array $modelFiles): void {
 }
 
 // Truncate tables
-function truncateTables(PDO $pdo, array $tables): void {
-    echo "\n🧹 Truncating tables…\n";
+function migrateTables(PDO $pdo, array $tables): void {
+    echo "\n🧹 Migrating tables…\n";
 
     foreach ($tables as $table) {
         if (tableExists($pdo, $table)) {
@@ -83,6 +83,6 @@ $modelFiles = [
 ];
 
 applyModels($pdo, $modelFiles);
-truncateTables($pdo, array_keys($modelFiles));
+migrateTables($pdo, array_keys($modelFiles));
 
 echo "\n🏁 Database Resetting Complete.\n";
