@@ -1,0 +1,196 @@
+/* Inherit global font */
+* {
+  font-family: "Orbitron", sans-serif;
+}
+
+body {
+  color: white;
+  background-image: url("../img/booking-page-background-image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.trips-section {
+  margin-top: 3.5rem;
+
+}
+
+.booking-section {
+  height: 100vh;
+
+  margin-top: 3.5rem;
+  color: white;
+}
+
+/* Section Setup */
+.explore-section {
+  position: relative;
+  background-image: url(/assets/img/explore-section-body-bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  z-index: 0;
+}
+
+.explore-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.74);
+  z-index: 1;
+}
+
+.explore-section-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1664px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Headline */
+.explore-zonescapes {
+  text-align: center;
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 400;
+  color: white;
+}
+
+.explore-zonescape-span2 {
+  background: linear-gradient(
+    90deg,
+    rgba(113, 9, 147, 1) 0%,
+    rgba(100, 8, 130, 1) 62%,
+    rgba(154, 115, 167, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Rectangles */
+.first-rectangle,
+.second-rectangle,
+.third-rectangle {
+  width: 100%;
+  max-width: 1664px;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.first-rectangle {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/img/1st-rectangle-bg.png);
+}
+
+.second-rectangle {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/img/2nd-rectangle-bg.png);
+}
+
+.third-rectangle {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/assets/img/3rd-rectangle-bg.png);
+}
+
+/* Shared Rectangle Layout */
+.rectangle-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.rectangle-date {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  color: white;
+}
+
+.rectangle-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: white;
+}
+
+/* Typography for All */
+.first-date,
+.second-date,
+.third-date {
+  font-size: 24px;
+  color: white;
+}
+
+.first-day,
+.second-day,
+.third-day {
+  font-size: 80px;
+  font-weight: 400;
+  color: white;
+}
+
+.first-place,
+.second-place,
+.third-place {
+  font-size: 40px;
+  font-weight: 400;
+  color: #c25de4;
+}
+
+.first-liner,
+.second-liner,
+.third-liner {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.first-brief,
+.second-brief,
+.third-brief {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.book-button-container {
+    align-items: center;
+    height: 100%;
+}
+
+.book-button {
+  border: 2px solid white;
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 20px;
+  width: 8rem;
+  padding: 0.25rem 1.5rem;
+  text-align: center;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+#book-button:hover {
+  transform: scale(1.1);
+}
+
+#book-button:active {
+  transform: scale(0.9);
+}
