@@ -1,6 +1,14 @@
+# This tells Docker which files or directories to exclude from the build context
+# when building an image.
+
+# - Reduce image size.
+# - Speed up build times.
+
+# Avoid copying unnecessary or sensitive files (like .git, node_modules, or .env)
+#into the Docker image.
+
 **/.classpath
 **/.dockerignore
-**/.env
 **/.git
 **/.gitignore
 **/.project
