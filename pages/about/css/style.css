@@ -1,0 +1,49 @@
+
+/* Team Section */
+main.team-section {
+  background-image: url(..//img/about-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 40px 20px;
+  overflow-x: auto; /* in case it overflows on smaller screens */
+  margin-top: 3.5rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Force exactly 5 in one row */
+  gap: 32px;
+  max-width: 100%;
+  justify-items: center;
+  align-items: start;
+}
+
+.team-member {
+  text-align: center;
+  max-width: 220px;
+}
+
+.team-member img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.member-info {
+  margin-top: 12px;
+}
+
+.member-info h3 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin: 4px 0;
+}
+
+.member-info p {
+  font-size: 0.9rem;
+  color: #666;
+}
