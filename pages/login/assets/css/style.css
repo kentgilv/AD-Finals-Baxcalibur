@@ -1,0 +1,152 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron";
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-image: url(./../img/login-page-background-image.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100vh;
+  margin-top: 3.5rem;
+}
+
+/* ========== NAVBAR ========== */
+nav {
+  display: flex;
+  align-items: center;
+  height: 3.5rem;
+  padding: 0 1.5rem 0 2rem;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+  background-color: transparent;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-brand a {
+  color: white;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 40px;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+/* ========== PAGE LAYOUT ========== */
+.login-section {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 3.5rem);
+}
+
+.left-panel {
+  width: 50%;
+}
+
+/* ========== LOGIN FORM CONTAINER ========== */
+.container {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  color: white;
+}
+
+/* ========== FORM STYLES ========== */
+.login-form h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: white;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #667eea;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #5a67d8;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* ========== RESPONSIVE STYLES ========== */
+@media (max-width: 768px) {
+  .login-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .left-panel {
+    display: none;
+  }
+
+  .container {
+    width: 95%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+}
