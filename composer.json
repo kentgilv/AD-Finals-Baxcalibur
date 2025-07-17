@@ -1,0 +1,32 @@
+{
+    "name": "baxcalibur/ad-finals-baxcalibur",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Baxcalibur\\AdFinalsBaxcalibur\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "genesisadduru",
+            "email": "202310334@fit.edu.ph"
+        },
+        {
+            "name": "chillyboy07",
+            "email": "bonneviechilly@gmail.com"
+        },
+        {
+            "name": "lagamiaSam",
+            "email": "lagamiasamuel8@gmail.com"
+        },
+        {
+            "name": "OwenLiangco",
+            "email": "owenliangco21@gmail.com"
+        },
+        {
+            "name": "kentgilv",
+            "email": "kent.v.valencia@gmail.com"
+        }
+    ],
+    "require": {}
+}
