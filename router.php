@@ -7,7 +7,7 @@
 // - Forwards all other requests to index.php for routing
 // - Simulates basic web server behavior (like Apache/Nginx)
 
-require_once _DIR_ . '/bootstrap.php';
+require_once __DIR__ . '/bootstrap.php';
 
 // Handle static file requests when using the built-in server
 if (PHP_SAPI === 'cli-server') {
